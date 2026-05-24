@@ -2,6 +2,7 @@ class Speech < Formula
   desc "AI speech models for Apple Silicon — ASR, TTS, speech-to-speech"
   homepage "https://github.com/soniqo/speech-swift"
   url "https://github.com/soniqo/speech-swift/releases/download/v0.0.17/speech-macos-arm64.tar.gz"
+  version "0.0.17"
   sha256 "d53ee0d1d4011cdcb74e10aa793ef7830e6e6939b2cd3e9d9cefccced451ceed"
   license "Apache-2.0"
 
@@ -15,7 +16,11 @@ class Speech < Formula
     %w[speech speech-server audio audio-server mlx.metallib].each do |f|
       libexec.install f if File.exist?(f)
     end
-    libexec.install "Qwen3Speech_KokoroTTS.bundle" if File.exist?("Qwen3Speech_KokoroTTS.bundle")
+    # Install every SPM-generated resource bundle next to the binary.
+    # Kokoro needs its own pronunciation dicts; MAGNeT/VoxCPM2/Qwen3 pull
+    # tokenizers via swift-transformers_Hub.bundle; Magpie ships baked
+    # speaker tables. Globbing keeps future modules from silently breaking.
+    Dir["*.bundle"].each { |b| libexec.install b }
 
     %w[speech speech-server audio audio-server].each do |name|
       bin.write_exec_script libexec/name if (libexec/name).exist?
