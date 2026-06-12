@@ -6,14 +6,6 @@ class Speech < Formula
   sha256 "a1cc9eadecadc3c3333394dbd96a2474d8b7d8a463910bc5865c13c84da90ff9"
   license "Apache-2.0"
 
-  # speech has moved to Homebrew Core — use `brew install speech` directly.
-  # The tap formula is frozen at v0.0.17 (the `url` was bumped by the release
-  # workflow but the `version` literal was not — a release.yml bug that
-  # surfaced as soniqo/speech-swift#298). `deprecate!` keeps existing
-  # installs working with a clear migration warning; a follow-up will flip
-  # to `disable!` after a grace period.
-  deprecate! date: "2026-06-12", because: "it has been migrated to Homebrew Core; run `brew install speech` instead"
-
   depends_on arch: :arm64
   depends_on :macos
 
