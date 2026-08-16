@@ -1,9 +1,9 @@
 class Speech < Formula
   desc "AI speech models for Apple Silicon — ASR, TTS, speech-to-speech"
   homepage "https://github.com/soniqo/speech-swift"
-  url "https://github.com/soniqo/speech-swift/releases/download/v0.0.23/speech-macos-arm64.tar.gz"
-  version "0.0.23"
-  sha256 "1cd5612a9d12ac1bd37b3b66620f3f6cccb9245daa3e8d5cbcb345b7caf9d0f4"
+  url "https://github.com/soniqo/speech-swift/releases/download/v0.0.25/speech-macos-arm64.tar.gz"
+  version "0.0.25"
+  sha256 "bdbcc968a67de348f123bde58fabea86ddd69b7fc0480093fd8ec6d0afb4faae"
   license "Apache-2.0"
 
   depends_on arch: :arm64
